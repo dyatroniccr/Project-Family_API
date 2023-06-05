@@ -30,13 +30,15 @@ def handle_hello():
 
     # this is how you can use the Family datastructure by calling its methods
     members = jackson_family.get_all_members()
-    response_body = {
-        #"hello": "world",
-        "family": members 
-    }
-
+    response_body =  list(map(lambda member: {
+        "first_name":member['first_name'],
+        "age":member['age'],
+        "id":member['id'],
+        "lucky_numbers":member['lucky_numbers']}, 
+        members))
 
     return jsonify(response_body), 200
+
 @app.route('/member', methods=['POST'])
 def add_member():
     body = request.get_json()

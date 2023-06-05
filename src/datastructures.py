@@ -67,7 +67,14 @@ class FamilyStructure:
                 self._members.pop(position)                
                 return {"done" : True}
         return None
-
+    
+    def update_member(self, id, member):
+        for position in range(len(self._members)):
+            print(position)            
+            if self._members[position]["id"] == int(id):
+                self._members[position].update(member) #method . Update for list
+                return {"done" : True}
+        pass
 
     def get_member(self, id):
         # fill this method and update the return
@@ -78,12 +85,3 @@ class FamilyStructure:
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
         return self._members
-
-    def update_member(self, id, member):
-        for position in range(len(self._members)):
-            print(position)            
-            if self._members[position]["id"] == int(id):
-                self._members[position].update(member) #method . Update for list
-                return {"done" : True}
-        pass
-            
